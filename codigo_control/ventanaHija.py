@@ -132,8 +132,8 @@ class VentanaHija(Frame):
         self.my_label.place(x= 700, y= 300)
         
         # Define Our Images
-        self.on = PhotoImage(file = "imagenes/on.png")
-        self.off = PhotoImage(file = "imagenes/off.png")
+        self.on = PhotoImage(file = "codigo_control/imagenes/on.png")
+        self.off = PhotoImage(file = "codigo_control/imagenes/off.png")
         
         # Create A Button
         self.on_button = Button(pestania, image = self.off, bd = 0, command = self.switch)

@@ -45,7 +45,7 @@ class VentanaMadre(Frame):
         # Ponemos la imagen en el frame3
 
         #Load an image in the script
-        self.img= (Image.open("imagenes/logo7.jpg"))
+        self.img= (Image.open("codigo_control/imagenes/logo7.jpg"))
 
         #Resize the Image using resize method
         self.resized_image= self.img.resize((300,300), Image.ANTIALIAS)
