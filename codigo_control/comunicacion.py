@@ -3,7 +3,7 @@ import serial
 #from serial import tools
 import serial.tools.list_ports
 # Crear subprocesos o hilos
-from threading import Thread, Event
+from threading import Thread
 from tkinter import StringVar
 
 class Comunicacion():
@@ -24,9 +24,6 @@ class Comunicacion():
         self.baudrates= ["1200", "2400", "4800", "9600", "19200", "38400", "115200"]
         self.puertos= []
 
-        # Inicializamos la senal de evento y de hilo
-        #self.senal= Event()
-        #self.hilo= None
         # Creamos el hilo de leer los sensores
         # indicamos que es un hilo que se esta corriendo siempre
         self.hilo1 = Thread(target= self.leer_datos, daemon=False)
@@ -42,6 +39,7 @@ class Comunicacion():
         try:
             self.micro.open()
         except:
+            print('MICRO CERRADO')
             pass
         if(self.micro.is_open):
             self.iniciar_hilo()
@@ -59,15 +57,12 @@ class Comunicacion():
                 # # Escribir salto de linea y codificar
                 dato = self.dato_motor.get()
                 int_dato = int(dato)
-                print(f"Esribo {dato}")
-                print(f"INT {dato}")
                 if int_dato < 10:
                     str_dato = '00'+dato
                 elif int_dato < 100:
                     str_dato = '0'+dato
                 else:
                     str_dato = dato
-                print(f"STR {str_dato}")
                 self.micro.write(str_dato.encode())
         except TypeError:
             pass
@@ -80,7 +75,7 @@ class Comunicacion():
                 data = self.micro.readline().decode("utf-8").strip()
                 # Comprobamos que la cadena no este vacia
                 if data:
-                    print(f'Datos: {data}')
+                    #print(f'Datos: {data}')
                     # Comprobamos si el dato es de temperatura (T) o de flujo (F)
                     if (data[0] == 'F'):
                         self.datos_flujo.set(data[1:])
@@ -88,11 +83,11 @@ class Comunicacion():
 
                         # Regulamos el relé
                         valor_flujo= float(data[1:])
-                        print(valor_flujo)
+                        #valor_fujo= valor_flujo-0.7
 
                         if(valor_flujo <= 0.7):
-                            print('Envio 255')
-                            #self.dato_motor.set('255')
+                            print('Envio 999')
+                            #self.dato_motor.set('999')
                             #self.enviar_datos()
                         elif(valor_flujo >= 2.5):
                             print('Envio 000')
