@@ -83,16 +83,14 @@ class Comunicacion():
 
                         # Regulamos el relé
                         valor_flujo= float(data[1:])
-                        #valor_fujo= valor_flujo-0.7
-
-                        if(valor_flujo <= 0.7):
+                        if(valor_flujo <= 0.3):
                             print('Envio 999')
-                            #self.dato_motor.set('999')
-                            #self.enviar_datos()
-                        elif(valor_flujo >= 2.5):
+                            self.dato_motor.set('999')
+                            self.enviar_datos()
+                        elif(valor_flujo >= 1.5):
                             print('Envio 000')
-                            #self.dato_motor.set('000')
-                            #self.enviar_datos()
+                            self.dato_motor.set('000')
+                            self.enviar_datos()
              
                     elif(data[0] == 'T'):
                         self.datos_temp.set(data[1:])

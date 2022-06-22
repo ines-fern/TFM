@@ -69,7 +69,7 @@ class VentanaHija(Frame):
         self.ax1.set_xlabel("Time")
         self.ax1.set_ylabel("Amplitude")
         self.ax1.set_xlim(0, 100)
-        self.ax1.set_ylim(0, 7)
+        self.ax1.set_ylim(0, 3)
         self.figure1Canvas = FigureCanvasTkAgg(self.figure1, master=pestania )
         
         self.figure2, self.ax2 = plt.subplots(figsize=(5,4))
@@ -77,7 +77,7 @@ class VentanaHija(Frame):
         self.ax2.set_xlabel("Time")
         self.ax2.set_ylabel("Amplitude")
         self.ax2.set_xlim(0, 100)
-        self.ax2.set_ylim(25, 45)
+        self.ax2.set_ylim(25, 35)
         self.figure2Canvas = FigureCanvasTkAgg(self.figure2, master=pestania)
 
         # Creamos las lineas donde iran los datos, una para cada sensor
@@ -115,10 +115,7 @@ class VentanaHija(Frame):
 
     def pestana1(self, pestania, coordenadas):
         '''Se crean los elementos de la segunda pestaña''' 
-        # Activar o desactivar el motor con la varable global boolean
         # Al clickar se llama a la funcion enviar
-        #motorOnOff= Checkbutton(pestania, text="Encender/Apagar Motor", variable=self.value_motor, onvalue=1, offvalue=0, command= self.enviar)
-        #motorOnOff.pack(ipadx=30, ipady=90)
 
         # Texto
         texto= Label(pestania, bg="snow3",font= "Helvetica", text="The engine regulates itself according to the measured value of the flow meter. \nIf manual operation is required, the following controls are available to operate the engine:") 

@@ -74,7 +74,6 @@ class VentanaMadre(Frame):
         self.bt_actualizar= Button(self.root, bg="snow3", font= "Helvetica", text='Update', command= self.actualizar_puertos).pack()
         
 
-    # CORREGIR ESTOOO
     def conectar_serial(self):
         # Asignamos lo que seleccionamos en el combobox a las variables del otro fichero
         self.datos_micro.micro.port= self.combobox_port.get()
